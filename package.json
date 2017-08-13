@@ -1,0 +1,21 @@
+{
+  "name": "static-site-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "start": "gatsby serve"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gatsby": "^1.8.4",
+    "gatsby-link": "^1.6.7",
+    "gatsby-plugin-react-helmet": "^1.0.2",
+    "gatsby-source-filesystem": "^1.4.2",
+    "gatsby-transformer-remark": "^1.7.0"
+  }
+}
