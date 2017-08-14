@@ -16,8 +16,8 @@ const PostTemplate = ({ data }) =>
 export default PostTemplate
 
 export const pageQuery = graphql`
-  query PostByPath($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
+  query PostTemplate($slug: String) {
+    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       html
       frontmatter {
         title

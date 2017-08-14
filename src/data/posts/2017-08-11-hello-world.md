@@ -1,5 +1,5 @@
 ---
-path: "/post/hello-world"
+slug: "hello-world"
 title: "Hello World"
 date: "2017-08-11"
 ---

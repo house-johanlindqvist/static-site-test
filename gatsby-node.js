@@ -17,8 +17,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
               node {
                 html
                 frontmatter {
-                  path
-                  title
+                  slug
                 }
               }
             }
@@ -31,11 +30,14 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           reject(new Error(result.errors))
         }
 
-        result.data.allMarkdownRemark.edges.forEach(edge => {
+        result.data.allMarkdownRemark.edges.forEach(({ node }) => {
 
           createPage({
-            path: edge.node.frontmatter.path,
-            component: postTemplate
+            path: `post/${ node.frontmatter.slug }`,
+            component: postTemplate,
+            context: {
+              slug: node.frontmatter.slug
+            }
           })
         })
 

@@ -3,12 +3,11 @@ import Link from 'gatsby-link'
 
 const IndexPage = ({ data }) =>
   <main>
-    <h1>static-site-test</h1>
     <h2>Posts</h2>
     <nav>
       {
-        data.allMarkdownRemark.edges.map(({ node }) =>
-          <Link to={ node.frontmatter.path }>{ node.frontmatter.title }</Link>
+        data.allMarkdownRemark.edges.map(({ node }, i) =>
+          <Link key={ i } to={ `post/${ node.frontmatter.slug }` }>{ node.frontmatter.title }</Link>
         )
       }
     </nav>
@@ -22,8 +21,8 @@ export const pageQuery = graphql`
       edges {
         node {
           frontmatter {
+            slug
             title
-            path
           }
         }
       }
