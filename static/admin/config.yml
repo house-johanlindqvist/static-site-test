@@ -1,5 +1,5 @@
 backend:
-  name: static-site-test
+  name: github
   repo: house-johanlindqvist/static-site-test
   branch: master
 
