@@ -18,7 +18,7 @@ const IndexLayout = ({ children }) =>
     <hr />
     { children() }
     <footer>
-      <a href="https://www.gatsbyjs.org/" targe="_blank">
+      <a href="https://www.gatsbyjs.org/" target="_blank">
         <img src={ gatsbyLogo } width="30" alt="Powered by GatsbyJS" />
       </a>
     </footer>

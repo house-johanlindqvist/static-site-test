@@ -9,6 +9,7 @@ const Post = ({ data }) =>
     <article>
       <h1>{ data.markdownRemark.frontmatter.title }</h1>
       <datetime>{ new Date( data.markdownRemark.frontmatter.date ).toLocaleString('sv-SE') }</datetime>
+      <img src={ data.markdownRemark.frontmatter.image } />
       <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
     </article>
   </main>
@@ -26,6 +27,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date
+        image
       }
     }
   }
