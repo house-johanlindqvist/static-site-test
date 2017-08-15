@@ -1,7 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 
-const PostTemplate = ({ data }) =>
+const Post = ({ data }) =>
   <main>
     <Helmet>
       <title>{ data.markdownRemark.frontmatter.title }</title>
@@ -13,10 +13,10 @@ const PostTemplate = ({ data }) =>
     </article>
   </main>
 
-export default PostTemplate
+export default Post
 
 export const pageQuery = graphql`
-  query PostTemplate($slug: String) {
+  query PostPageQuery($slug: String) {
     markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       html
       frontmatter {
