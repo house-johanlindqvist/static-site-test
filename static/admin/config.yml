@@ -1,6 +1,6 @@
 backend:
   name: static-site-test
-  repo: house-johanlindqvist/static-site-test # Path to your Github repository
+  repo: https://github.com/house-johanlindqvist/static-site-test.git # Path to your Github repository
   branch: master # Branch to update
 
 publish_mode: editorial_workflow
