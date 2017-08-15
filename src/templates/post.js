@@ -17,7 +17,11 @@ export default Post
 
 export const pageQuery = graphql`
   query PostPageQuery($slug: String) {
-    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+    markdownRemark(
+      frontmatter: {
+        slug: {eq: $slug}
+      }
+    ) {
       html
       frontmatter {
         title

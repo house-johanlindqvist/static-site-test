@@ -12,12 +12,22 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
     resolve(
       graphql(`
         {
-          allMarkdownRemark(limit: 1000) {
+          posts: allFile(
+            filter:{
+              sourceInstanceName:{eq:"posts"},
+              extension:{eq:"md"}
+            }
+          ) {
             edges {
               node {
-                html
-                frontmatter {
-                  slug
+                childMarkdownRemark {
+                  html
+                  frontmatter {
+                    title
+                    slug
+                    date
+                    parent
+                  }
                 }
               }
             }
@@ -30,13 +40,15 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           reject(new Error(result.errors))
         }
 
-        result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+        result.data.posts.edges.forEach(({ node }) => {
+
+          const post = node.childMarkdownRemark
 
           createPage({
-            path: `post/${ node.frontmatter.slug }`,
+            path: `post/${ post.frontmatter.slug }`,
             component: postTemplate,
             context: {
-              slug: node.frontmatter.slug
+              slug: post.frontmatter.slug
             }
           })
         })
