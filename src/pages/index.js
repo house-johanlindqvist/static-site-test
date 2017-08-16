@@ -10,7 +10,7 @@ const IndexPage = ({ data }) =>
           {
             data.posts.edges.map(({ node }, i) =>
               <li key={ i } >
-                <Link to={ `post/${ node.childMarkdownRemark.frontmatter.slug }` }>{ node.childMarkdownRemark.frontmatter.title }</Link>
+                <Link to={ `post/${ node.frontmatter.slug }` }>{ node.frontmatter.title }</Link>
               </li>
             )
           }
@@ -23,22 +23,13 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query IndexPageQuery {
-    posts: allFile(
-      filter:{
-        sourceInstanceName:{eq:"posts"},
-        extension:{eq:"md"}
-      }
-    ) {
+    posts: allMarkdownRemark {
       edges {
         node {
-          childMarkdownRemark {
-            html
-            frontmatter {
-              title
-              slug
-              date
-              parent
-            }
+          html
+          frontmatter {
+            title
+            slug
           }
         }
       }
