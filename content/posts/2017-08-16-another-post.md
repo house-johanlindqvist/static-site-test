@@ -1,4 +1,5 @@
 ---
+slug: another-post
 title: Another post
 date: 2017-08-16T07:08:35.851Z
 image: /uploads/jan-192647.jpg

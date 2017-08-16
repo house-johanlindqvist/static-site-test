@@ -12,22 +12,15 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
     resolve(
       graphql(`
         {
-          posts: allFile(
-            filter:{
-              sourceInstanceName:{eq:"posts"},
-              extension:{eq:"md"}
-            }
-          ) {
+          posts: allMarkdownRemark {
             edges {
               node {
-                childMarkdownRemark {
-                  html
-                  frontmatter {
-                    title
-                    slug
-                    date
-                    parent
-                  }
+                html
+                frontmatter {
+                  title
+                  slug
+                  date
+                  parent
                 }
               }
             }
@@ -42,13 +35,11 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 
         result.data.posts.edges.forEach(({ node }) => {
 
-          const post = node.childMarkdownRemark
-
           createPage({
-            path: `post/${ post.frontmatter.slug }`,
+            path: `post/${ node.frontmatter.slug }`,
             component: postTemplate,
             context: {
-              slug: post.frontmatter.slug
+              slug: node.frontmatter.slug
             }
           })
         })

@@ -4,13 +4,12 @@ import Helmet from 'react-helmet'
 const PostPage = ({ data }) =>
   <main>
     <Helmet>
-      <title>{ data.markdownRemark.frontmatter.title }</title>
+      <title>{ data.post.frontmatter.title }</title>
     </Helmet>
     <article>
-      <h1>{ data.markdownRemark.frontmatter.title }</h1>
-      <datetime>{ new Date( data.markdownRemark.frontmatter.date ).toLocaleString('sv-SE') }</datetime>
-      <img src={ data.markdownRemark.frontmatter.image } style={{display:'block',width:'100%',height:'100%'}} />
-      <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
+      <h1>{ data.post.frontmatter.title }</h1>
+      <img src={ data.post.frontmatter.image } style={{display:'block',width:'100%',height:'100%'}} />
+      <div dangerouslySetInnerHTML={{ __html: data.post.html }} />
     </article>
   </main>
 
@@ -18,7 +17,7 @@ export default PostPage
 
 export const pageQuery = graphql`
   query PostPageQuery($slug: String) {
-    markdownRemark(
+    post: markdownRemark(
       frontmatter: {
         slug: {eq: $slug}
       }
@@ -26,7 +25,6 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
-        date
         image
       }
     }
